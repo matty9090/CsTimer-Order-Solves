@@ -66,6 +66,11 @@
 				padding: 2px;
 			}
 			
+			input[type='submit'] {
+				font-size: 18px;
+				padding: 3px 6px;
+			}
+			
 			textarea {
 				display: block;
 				width: 100%;
@@ -76,15 +81,6 @@
 	</head>
 	<body>
 		<div class="wrapper">
-			<?php
-				if(!empty($solves)) {
-					echo '<div class="box">';
-					echo $solves;
-					echo '</div>';
-					echo '<br />';
-				}
-			?>
-		
 			<div class="box">
 				<form action="index.php" method="post">
 					Session: <input type="number" name="session" min="1" value="1" /><br /><br />
@@ -92,6 +88,14 @@
 					<br /><input type="submit" name="parse" value="Go" />
 				</form>
 			</div>
+			
+			<?php
+				if(!empty($solves)) {
+					echo '<br /><div class="box">';
+					echo $solves;
+					echo '</div>';
+				}
+			?>
 		</div>
 	</body>
 </html>
