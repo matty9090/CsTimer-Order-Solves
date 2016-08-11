@@ -1,5 +1,6 @@
 <?php
 	$solves = '';
+	$spin_value = 1;
 	
 	if(isset($_POST['solves'])) {
 		$s = json_decode($_POST['solves']);
@@ -8,6 +9,8 @@
 			$n = 'session' . (int)$_POST['session'];
 			$s = json_decode($s->{$n});
 			$times = [];
+			
+			$spin_value = (int)$_POST['session'];
 			
 			foreach($s as $v)
 				$times[] = $v[0][1] / 1000;
@@ -83,7 +86,7 @@
 		<div class="wrapper">
 			<div class="box">
 				<form action="index.php" method="post">
-					Session: <input type="number" name="session" min="1" value="1" /><br /><br />
+					Session: <input type="number" name="session" min="1" value="<?php echo $spin_value; ?>" /><br /><br />
 					<textarea name="solves"><?php echo (isset($_POST['solves'])) ? $_POST['solves'] : ''; ?></textarea>
 					<br /><input type="submit" name="parse" value="Go" />
 				</form>
